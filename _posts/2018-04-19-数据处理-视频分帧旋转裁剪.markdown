@@ -1,0 +1,86 @@
+---
+layout: post
+title: "视频处理-分帧翻转裁剪"
+date: 2018-04-19
+categories: 数据处理
+tags: [视频处理,分帧,翻转,裁剪,Opencv]
+---
+# 利用opencv对图像进行分帧旋转裁剪
+## 统计视频总帧数
+
+```python
+#-*-coding:utf-8 -*-
+import os
+import cv2
+
+video_cap = cv2.VideoCapture('video_0.mp4')
+
+frame_count = 0
+all_frames = []
+while(True):
+    ret, frame = video_cap.read()
+    if ret is False:
+        break
+    all_frames.append(frame)
+    frame_count = frame_count + 1
+
+# The value below are both the number of frames
+print(frame_count)
+print(len(all_frames))
+```
+## 视频分帧保存图片
+```python
+import cv2  
+vidcap = cv2.VideoCapture('video_0.mp4')  
+success,image = vidcap.read()  
+count = 0  
+success = True  
+while success:  
+  success,image = vidcap.read()  
+  # save frame as JPEG file
+  cv2.imwrite("/home/frame%d.jpg" % count, image)      
+  count += 1 
+```
+## 竖直翻转图像
+```python 
+import os
+import os.path as osp
+from PIL import Image  
+  
+#读取图像  
+path = '/home/jjchu/Dataset/DataProcess/imgviedo'
+path2 = '/home/jjchu/Dataset/DataProcess/imgrotate'
+for i in range(136):
+	i = str(i)
+	name = 'frame'+i+'.jpg'
+	imgpath = osp.join(path,name)
+	savepath = osp.join(path2,name)
+	im = Image.open(imgpath) 
+	# 指定逆时针旋转的角度  
+	im_rotate = im.rotate(180)
+	im_rotate.save(savepath)  
+```
+## 裁剪图像
+```python
+import os
+import os.path as osp
+from PIL import Image 
+import sys
+# im.size = (1280,720)
+IMAGE_X1 = 750
+IMAGE_X2 = 1100
+IMAGE_Y1 = 80
+IMAGE_Y2 = 720
+box = (IMAGE_X1,IMAGE_Y1,IMAGE_X2,IMAGE_Y2) #设定裁剪区域
+# imgpath = sys.arg[1]
+path = '/home/jjchu/Dataset/DataProcess/imgrotate'
+path3 = '/home/jjchu/Dataset/DataProcess/imgcrops'
+for i in range(110,135):
+	i = str(i)
+	name = 'frame'+i+'.jpg'
+	imgpath = osp.join(path,name)
+	savepath = osp.join(path3,name)
+	im = Image.open(imgpath)  # 打开图片句柄
+	region = im.crop(box)  # 裁剪图片，并获取句柄region 
+	region.save(savepath) 
+```

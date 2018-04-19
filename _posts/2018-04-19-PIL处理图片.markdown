@@ -1,0 +1,93 @@
+---
+layout: post
+title: "图片处理-数据遮挡"
+date: 2018-04-19
+categories: 数据处理
+tags: [数据处理,PIL]
+---
+# PIL库及相关处理函数的使用
+- PIL (0,255)的范围
+
+##1、导入Image库
+ ```python
+ from PIL import Image
+ ```
+## 2. 读取图片：
+```python
+     img = Image.open('test.jpg')
+```
+## 3. 显示一张图片：
+```python
+     img.show()
+```
+## 4. 保存图片：
+```python
+     img.save("save.png")
+```
+## 5. 创建新图片：
+```python
+    Image.new(mode, size)  
+    Image.new(mode, size, color)  
+    newImg = Image.new("RGBA",(640,480),(0,255,0))
+    newImg.save("newImg.png","PNG")
+```
+## 6. 两张图片相加：
+```python
+    Image.blend(img1, img2, alpha)# alpha为img1和img2比例参数
+```
+## 7. 点操作：
+```python
+    im.point(function)
+    #这个function接受一个参数，且对图片中的每一个点执行这个函数
+    # 比如：out = im.point(lambda i : i*1.5)#对每个点进行50%的加强
+```
+## 8. 查看图像信息：
+```python
+        im.format, im.size, im.mode
+```
+## 9.  图片裁剪：
+```python
+    box = (100,100,500,500)  #设置要裁剪的区域 
+    region = im.crop(box)     #此时，region是一个新的图像对象。
+```
+## 10. 图像黏贴（合并）
+```python
+    im.paste(region, box)#粘贴box大小的region到原先的图片对象中。 
+```
+## 11. 通道分离：
+```python
+   r,g,b = im.split()#分割成三个通道  ，此时r,g,b分别为三个图像对象。
+```
+## 12. 通道合并：
+```python
+   im = Image.merge("RGB", (b, g, r))#将b,r两个通道进行翻转。
+```
+## 13. 改变图像的大小：
+```python
+   out = img.resize((128, 128))#resize成128*128像素大小
+```
+## 14. 旋转图像：
+```python
+   out = img.rotate(45) #逆时针旋转45度  
+   有更方便的：
+   region = region.transpose(Image.ROTATE_180）
+```
+## 15. 图像转换：
+```python
+  out = im.transpose(Image.FLIP_LEFT_RIGHT)#左右对换
+  out= im.transpose(Image.FLIP_TOP_BOTTOM)#上下对换
+```
+## 16. 图像类型转换：
+```python
+     im=im.convert("RGBA")
+```
+## 17. 获取某个像素位置的值：
+```python
+   im.getpixel((4,4))
+```
+## 18.  写某个像素位置的值：
+```python
+   img.putpixel((4,4),(255,0,0))
+```
+
+
