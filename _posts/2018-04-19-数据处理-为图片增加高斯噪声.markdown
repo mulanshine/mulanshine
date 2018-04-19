@@ -76,7 +76,7 @@ Output floating-point image data on range [0, 1] or [-1, 1] if theinput image wa
 - Skimage读取图像是RGB，而Opencv是BGR
 - Skimage读取图像后是(height, width, channel)<br>
 
-###为图片增加高斯噪声代码
+### 为图片增加高斯噪声代码
 ```python
 from matplotlib import pyplot as plt
 from skimage import io
@@ -97,7 +97,7 @@ pylab.show()
 plt.savefig("noise_image.jpg")
 ```
 
-##生成图片结果
+#### 生成图片结果
 
 ![noise_image.jpg](https://github.com/mulanshine/mulanshine/raw/master/assets/pictures/noise_image.jpg )
 
