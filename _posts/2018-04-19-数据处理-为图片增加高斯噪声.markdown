@@ -97,7 +97,8 @@ pylab.show()
 plt.savefig("noise_image.jpg")
 ```
 
-####生成图片结果
+##生成图片结果
+
 ![noise_image.jpg](https://github.com/mulanshine/mulanshine/blob/master/pictures/noise_image.jpg "")
 
 
