@@ -31,3 +31,5 @@ pylab.show()
 
 
 ```
+#### 结果展示
+![obstacle_image.jpg](https://github.com/mulanshine/mulanshine/raw/master/assets/pictures/obstacle_image.jpg )

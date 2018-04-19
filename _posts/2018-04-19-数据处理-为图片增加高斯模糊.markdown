@@ -48,3 +48,5 @@ plt.title("Add Gaussian Blur")
 plt.savefig("blur_image.jpg")
 pylab.show()
 ```
+#### 图片结果展示
+![blur_image.jpg](https://github.com/mulanshine/mulanshine/raw/master/assets/pictures/blur_image.jpg )
