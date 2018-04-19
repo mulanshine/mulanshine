@@ -1,0 +1,79 @@
+---
+layout: post
+title: "行人重识别数据集"
+date: 2018-04-17
+categories: 数据集
+tags: [数据集, ReID]
+---
+### 数据集：行人重识别数据集
+####数据集Duke:
+
+- 8 cameras
+- 36411 pedestrain images
+- 1404 ID(identity)
+- 16522 training set image
+- 19889 testing set image:
+    - 2228 queries
+    - 17661 gallery
+<br>
+
+#####Duke_IDE_ResNet_50:<br>
+%gallery_camid          1x17661             141288  int64
+ 
+每张image对应的camera<br>
+%gallery_fea           17661x128（702）    9042432  single
+ 
+存储了gallery 的特征，17661×702的矩阵（有正有负）<br>
+%gallery_fname         17661x76            2684472  char
+ 
+保存gallery中17661张图片的存储路径<br>
+%gallery_pid             1x17661            141288  int64
+ 
+存储了gallery中每张图片对应的行人ID编号
+```python
+    %query_camid            1x2228            17824  int64
+    %query_fea             2228x128          1140736  single
+    %query_fname           2228x76            338656  char
+    %query_pid              1x2228              17824  int64
+    %train_camid            1x16522            132176  int64
+    %train_fea             16522x128         8459264  single
+    %train_fname           16522x76          2511344  char
+    %train_pid              1x16522             132176  int64
+```
+    
+#### 数据集VIPeR:
+- 2 cameras
+- 1264 pedestrain images
+- 632 ID(identity)
+- 632 training set image
+- 632 testing set image:
+
+```python    
+    %allimagenames           1264x1      181876      cell
+    %testcamIDs_set            10x1       51680      cell
+    %testimagenames_set        10x1      909998      cell
+    %testinds_set              10x1       51680      cell
+    %testlabels_set            10x1       51680      cell
+    %traincamIDs_set           10x1       51680      cell
+    %trainimagenames_set       10x1      911002      cell
+    %traininds_set             10x1       51680      cell
+    %trainlabels_set           10x1       51680      cell
+```
+#### 数据集Market-1501 ：
+- 6 cameras
+- 32,668 pedestrain images
+- 1,501 ID(identity)
+- 12936  training set image
+	- 750 ID(identity)
+- 19,732 testing set image
+	- 751 ID(identity)
+
+
+#### 数据集CUHK03 : <br>
+一个很受欢迎的基准测试，包含了14096个图片标记为1467个特征，每个人平均有4.8个图像。 在这个数据集中，提供了手动标记的边界框和dpm检测的边界盒。 
+#### 数据集DukeMTMC-reID： <br>
+8个摄像机记录的DukeMTMC跟踪数据集中的一个大型的基于图像的re-id数据集。<br>
+36,411个行人图像组成，其中16522个图像被选为训练集，其余19889个图像作为测试集。<br>
+在测试集中，2228个图像被作为查询从剩余的17661个画廊图像中检索。<br>
+在dukemtmc-reid，诸如汽车或树木的行人阻塞使得这个数据集非常具有挑战性。 
+

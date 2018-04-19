@@ -1,0 +1,103 @@
+---
+layout: post
+title: "图片处理-数据加噪"
+date: 2018-04-17
+categories: 数据处理
+tags: [数据处理,skimage]
+---
+# python 数据加噪
+- 高斯噪声(Gaussian noise)是指它的概率密度函数服从高斯分布的一类噪声。如果一个噪声，它的幅度分布服从高斯分布，而它的功率谱密度又是均匀分布的，则称它为高斯白噪声。 
+- 椒盐噪声(salt-and-pepper noise)是指两种噪声，一种是盐噪声（salt noise），另一种是胡椒噪声（pepper noise）。盐=白色(0)，椒=黑色(255)。前者是高灰度噪声，后者属于低灰度噪声。一般两种噪声同时出现，呈现在图像上就是黑白杂点。<br>
+![高斯函数密度函数.png](C:/Users/ZS/myblog/pictures/高斯函数密度函数.png "")
+
+## 增加高斯噪声
+```python
+shimage.util.random_noise(image,mode ='gaussian',seed=None,clip=True)
+```
+#### 参数介绍
+```
+image : ndarray
+
+Input image data. Will be converted to float.
+
+mode : str
+
+One of the following strings, selecting the type of noise to add:
+
+‘gaussian’ Gaussian-distributed additive noise.
+
+‘localvar’ Gaussian-distributed additive noise, with specified local variance at each point of image
+
+‘poisson’ Poisson-distributed noise generated from the data.
+
+‘salt’ Replaces random pixels with 1.
+
+‘pepper’ Replaces random pixels with 0 (for unsigned images) or -1 (for signed images).
+
+‘s&p’ Replaces random pixels with either 1 or low_val, where low_val is 0 for unsigned images or -1 for signedimages.
+
+‘speckle’ Multiplicative noise using out = image + n*image, where n is uniform noise with specified mean & variance.
+
+seed : int
+
+If provided, this will set the random seed before generating noise,for valid pseudo-random comparisons.
+
+clip : bool
+
+If True (default), the output will be clipped after noise appliedfor modes ‘speckle’, ‘poisson’, and ‘gaussian’. This isneeded to maintain the proper image data range. If False, clippingis not applied, and the output may extend beyond the range [-1, 1].
+
+mean : float
+
+Mean of random distribution. Used in ‘gaussian’ and ‘speckle’.Default : 0.
+
+var : float
+
+Variance of random distribution. Used in ‘gaussian’ and ‘speckle’.Note: variance = (standard deviation) ** 2. Default : 0.01
+
+local_vars : ndarray
+
+Array of positive floats, same shape as image, defining the localvariance at every image point. Used in ‘localvar’.
+
+amount : float
+
+Proportion of image pixels to replace with noise on range [0, 1].Used in ‘salt’, ‘pepper’, and ‘salt & pepper’. Default : 0.05
+
+salt_vs_pepper : float
+
+Proportion of salt vs. pepper noise for ‘s&p’ on range [0, 1].Higher values represent more salt. Default : 0.5 (equal amounts)
+
+Output
+out : ndarray
+
+Output floating-point image data on range [0, 1] or [-1, 1] if theinput image was unsigned or signed, respectively.
+```
+#### 注意事项
+- Peckle, Poisson, Localvar, and Gaussian noise 加上噪声后，值可能为负值，也可能超过255；默认情况下，clip参数值为True，将会clip掉这些超过区间的点，如果clip设置为False，就要注意有可能包含一些超过区间的点。
+- Skimage读取图像是RGB，而Opencv是BGR
+- Skimage读取图像后是(height, width, channel)<br>
+
+###为图片增加高斯噪声代码
+```python
+from matplotlib import pyplot as plt
+from skimage import io
+import skimage
+import pylab
+impath = "000001.jpg"
+image = io.imread(impath)
+img1 = image / 255.00
+img2 = skimage.util.random_noise(image,mode='gaussian',seed=None,clip=True)
+plt.figure(1)
+plt.subplot(121)
+plt.imshow(img1)
+plt.title("Origin picture")
+plt.subplot(122)
+plt.imshow(img2)
+plt.title("Add Gaussian noise")
+pylab.show()
+plt.savefig("noise_image.jpg")
+```
+
+####生成图片结果
+![noise_image.jpg](C:/Users/ZS/myblog/pictures/noise_image.jpg "")
+
+
