@@ -1,0 +1,33 @@
+---
+layout: post
+title: "图片处理-数据遮挡"
+date: 2018-04-19
+categories: 数据处理
+tags: [数据处理,PIL]
+---
+## 图片加遮挡代码
+```python
+from matplotlib import pyplot as plt
+from PIL import Image, ImageDraw
+import pylab
+import numpy as np
+impath = "000001.jpg"
+
+img1 = Image.open(impath)
+img1 = np.asarray(img1)/255.00
+img2 = Image.open(impath)
+draw = ImageDraw.Draw(img2)
+draw.rectangle((60,90,100,120), fill = (0,0,0))
+img2 = np.asarray(img2)/255.00
+plt.figure(1)
+plt.subplot(121)
+plt.imshow(img1)
+plt.title("Origin picture")
+plt.subplot(122)
+plt.imshow(img2)
+plt.title("Add obstacle")
+plt.savefig("obstacle_image.jpg")
+pylab.show()
+
+
+```
