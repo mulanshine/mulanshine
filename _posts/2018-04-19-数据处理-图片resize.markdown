@@ -1,0 +1,24 @@
+---
+layout: post
+title: "resize图片"
+date: 2018-04-24
+categories: 数据处理
+tags: [数据处理,resize]
+---
+# 图片缩放使用resize函数
+```python
+import os
+import os.path as osp
+from PIL import Image
+path3 = '/home/jjchu/poseGAN/DataProcess/imgcrops1/'
+path4 = '/home/jjchu/poseGAN/DataProcess/imgresize/'
+L = os.listdir(path3)
+for i in L:
+	impath = osp.join(path3,i)
+	savepath = osp.join(path4,i)
+	im = Image.open(impath)
+	# print(im.size)
+	# break
+	imsave = im.resize((176,256))
+	imsave.save(savepath)
+```
