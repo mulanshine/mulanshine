@@ -8,14 +8,14 @@ tags: [知识点,论文loss]
 #知识点小记
 
 ## Pixel-wise Loss(L1)
-![Pixel-wise Loss.png](assets/pictures/Pixel-wise Loss.png "")
+![Pixel-wise Loss.png](assets/pictures/Pixel-wise Loss.png)
 
 - captures the detailed appearance,but often generate persons whose structures are distorted and irregular.
 - 优点：保持先验信息，id信息，加速训练
 - 缺点：过度平滑，生成变化小
 
 ## Symmetry Loss
-![Symmetry Loss.png](assets/pictures/Symmetry Loss.png "")
+![Symmetry Loss.png](assets/pictures/Symmetry Loss.png)
  
 - 优点：生成更真实的图片，减轻自遮碍问题，加速收敛
 - 缺点：适用于仅有面部的图片，即有对称关系的图片，由于很多因素光照等，其实也不是完全对称，在Laplacian space更好。
@@ -23,11 +23,11 @@ tags: [知识点,论文loss]
 ## Perceptual losses 
 - 使用：使用VGG16预训练模型中间的激活层输出作为特征，计算loss
 
-![Perceptual loss.png](assets/pictures/Perceptual loss.png "")
+![Perceptual loss.png](assets/pictures/Perceptual loss.png)
 
 ## Total Variation Regularization
 
 功能： reduce spike artifacts
-![ltv.png](assets/pictures/ltv.png "")
+![ltv.png](assets/pictures/ltv.png)
 
 
