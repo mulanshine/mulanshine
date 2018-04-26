@@ -2,8 +2,8 @@
 layout: post
 title: "CNN-AlexNet"
 date: 2018-04-19-20:37
-categories: 卷积神经网络发展
-tags: [CNN,AlexNet]
+categories: [卷积神经网络发展,论文]
+tags: [论文,CNN,AlexNet]
 ---
 # AlexNet
 
