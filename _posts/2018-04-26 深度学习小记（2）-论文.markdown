@@ -28,6 +28,7 @@ tags: [知识点,论文loss]
 ## Total Variation Regularization
 
 功能： reduce spike artifacts
+
 ![ltv.png](https://github.com/mulanshine/mulanshine/raw/master/assets/pictures/ltv.png)
 
 
