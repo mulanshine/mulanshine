@@ -1,0 +1,8 @@
+layout: post
+title: "python-函数学习（1）"
+date: 2018-04-19
+categories: 学习杂记
+tags: [python]
+---
+- vars函数
+- 返回对象object的属性和属性值的字典对象，如果没有参数，就打印当前调用位置的属性和属性值类似 locals()。
