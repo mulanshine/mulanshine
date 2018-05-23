@@ -1,0 +1,12 @@
+layout: post
+title: "pytorch学习小记（1）"
+date: 2018-05-23
+categories: pytorch杂记
+tags: [pytorch]
+---
+
+- 设置gpu
+
+``` python
+    torch.cuda.set_device(gppu_id)
+```
