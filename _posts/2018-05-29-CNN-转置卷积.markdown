@@ -1,0 +1,12 @@
+---
+layout: post
+title: "反卷积-转置卷积"
+date: 2018-05-29
+categories: CNN
+tags: [转置卷积,反卷积]
+---
+# 转置卷积（Transposed Convolution）
+- 卷积和转置卷积并不是完全对称的两个过程
+- 可以发现卷积层时，正向和反向分别乘以C和CT。反卷积就是正向和反向分别乘以CT和C。
+
+

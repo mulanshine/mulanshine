@@ -1,0 +1,17 @@
+---
+layout: post
+title: "生成模型和风格迁移知识点"
+date: 2018-05-29
+categories: GAN
+tags: [生成模型,风格迁移]
+---
+- BN和IN有什么区别？
+
+ - BN和IN其实本质上是同一个东西，都是normalize，只是IN是作用于单张图片，但是BN作用于一个batch，受到其他图片的影响。
+ 
+ - 在图片视频分类等特征提取网络中大多数情况BN效果优于IN，在生成式类任务中的网络IN优于BN。
+
+
+- 风格迁移中为甚么使用Gram矩阵表示风格？
+ - 数学上严格等价于极小化这两张图deep activation的2nd poly kernel的MMD距离。（CSDN)
+ - MMD距离是用来通过从两个分布中sample的样本来衡量两个分布之间的差异的一种度量。

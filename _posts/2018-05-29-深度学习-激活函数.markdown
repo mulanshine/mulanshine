@@ -1,0 +1,63 @@
+---
+layout: post
+title: "专题-激活函数"
+date: 2018-05-29
+categories: 深度学习
+tags: 激活函数
+---
+# 非线性激活函数-拟合非线性函数
+转自：https://zhuanlan.zhihu.com/p/25110450
+- Sigmoid函数
+
+    ![sigmoid函数.png]("../assets/pictures/sigmoid函数.png ")
+
+    ![sigmoid图形.jpg]("../assets/pictures/sigmoid图形.jpg")
+    
+- 缺点：
+  - 容易出现gradient vanishing
+  - 函数输出并不是zero-centered
+  - 幂运算相对来讲比较耗时
+
+
+
+- Tanh函数
+
+    ![tanh函数.png]("../assets/pictures/tanh函数.png ")
+
+    ![tanh图形.jpg]("../assets/pictures/tanh图形.jpg ")
+- 缺点
+  - tanh读作Hyperbolic Tangent，如上图所示，它解决了zero-centered的输出问题，然而，gradient vanishing的问题和幂运算的问题仍然存在。
+
+- ReLU函数
+
+    ReLU = max(0,x)
+    
+    ![ReLU图形.jpg]("../assets/pictures/ReLU图形.jpg")
+- 优点：
+ - 解决了gradient vanishing问题 (在正区间)
+ - 计算速度非常快，只需要判断输入是否大于0
+ - 收敛速度远快于sigmoid和tanh
+- 缺点：
+ - ReLU的输出不是zero-centered
+ - Dead ReLU Problem，指的是某些神经元可能永远不会被激活，导致相应的参数永远不能被更新。有两个主要原因可能导致这种情况产生: 
+  - (1) 非常不幸的参数初始化，这种情况比较少见 
+  - (2) learning rate太高导致在训练过程中参数更新太大，不幸使网络进入这种状态。
+  - 解决方法是可以采用Xavier初始化方法，以及避免将learning rate设置太大或使用adagrad等自动调节learning rate的算法。
+
+-Leaky ReLU函数
+    f(x) = max(0.01x, x)
+    ![Leaky ReLU图形.jpg]("../assets/pictures/Leaky ReLU图形.jpg ")
+ 
+- ELU (Exponential Linear Units) 函数
+![ELU函数.png]("../assets/pictures/ELU函数.png ")
+![ELU图形.jpg]("../assets/pictures/ELU图形.jpg ")
+
+
+
+
+
+
+
+
+
+
